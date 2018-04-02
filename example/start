@@ -1,0 +1,23 @@
+#!/bin/sh
+
+set -e
+
+source ../get-version.sh
+
+mkdir -p ${PWD}/data
+
+APP_DIRECTORY=/usr/src/app/bcoin/data
+
+# Note: BCOIN_PREFIX tells bcoin where to store data
+docker run \
+  --memory=2G \
+  -p 8332:8332 -p 8333:8333 \
+  -e BCOIN_PREFIX=${APP_DIRECTORY} \
+  -e BCOIN_NO_AUTH=true \
+  -e BCOIN_HTTP_HOST=0.0.0.0 \
+  -v ${PWD}/data:${APP_DIRECTORY} \
+  --name=bcoin \
+  --rm -d \
+  my-bcoin
+
+docker logs bcoin -f --tail 10

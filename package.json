@@ -1,0 +1,7 @@
+{
+  "name": "bcoin-docker",
+  "version": "1.0.0",
+  "description": "Docker image for bcoin",
+  "author": "maxx-t",
+  "license": "MIT"
+}

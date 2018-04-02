@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+source ./get-version.sh
+
+echo "Building ${VERSION}..."
+
+docker build --tag bcoin --tag bcoin:${VERSION} .
